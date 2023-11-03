@@ -1,18 +1,25 @@
 import React from 'react';
 import './Card.css';
 
-const Card = () => {
+const Card = (props) => {
+    let badgeText;
+    if (props.item.openSpots === 0) {
+        badgeText = 'SOLD OUT';
+    } else if (props.item.location === 'Online') {
+        badgeText = 'ONLINE';
+    }
 	return (
 		<div className='card'>
-			<img src={require('../../images/image_1.png')} className='card--img' />
+            {badgeText && <div className='card--badge'>{badgeText}</div>}
+			<img src={require(`../../images/${props.item.coverImg}`)} className='card--img' />
 			<div className='card--stats'>
 				<img src={require('../../images/star.png')} className='card--star' />
-				<span>5.0</span>
-				<span className='gray'>(6) • </span>
-				<span className='gray'>USA</span>
+				<span>{props.item.rating}</span>
+				<span className='gray'>({props.item.stats.reviewCount}) • </span>
+				<span className='gray'>{props.item.location}</span>
 			</div>
-			<p>Life Lessons with Katie Zaferes</p>
-			<p><span className="bold">From $136</span> / person</p>
+			<p className='card--title'>{props.item.title}</p>
+			<p className='card--price'><span className='bold'>From ${props.item.price}</span> / person</p>
 		</div>
 	);
 };

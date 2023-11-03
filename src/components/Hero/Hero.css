@@ -1,5 +1,6 @@
 section {
     padding: 25px;
+    margin: 5px 20px;
 }
 
 .hero {
@@ -14,6 +15,7 @@ section {
 
 .hero--header {
     margin-bottom: 16px;
+    font-weight: bold;
 }
 
 .hero--text {
